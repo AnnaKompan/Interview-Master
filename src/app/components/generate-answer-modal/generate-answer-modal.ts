@@ -26,7 +26,7 @@ export class GenerateAnswerModal {
   }
   regenerateAnswer(): void {
     this.isLoading = true;
-    // simulate API call
+    // simulate API call (simulate generating answer, no service yet)
     setTimeout(() => {
       this.data.answer = 'This is a generated answer for the question: ' + this.data.question;
       this.isLoading = false;

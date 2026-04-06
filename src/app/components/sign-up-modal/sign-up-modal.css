@@ -5,3 +5,14 @@
   color: #fff; /* White text for readability in dark mode */
   background-color: #424242; /* Dark background */
 }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+mat-form-field {
+  margin-bottom: 10px;
+  width: 100%;
+}

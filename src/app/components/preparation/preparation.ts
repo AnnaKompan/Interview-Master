@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
+// MatDialog використовуєм через DI
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionItem, MOCK_DATA } from '../category/category.config';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { CdkTableDataSourceInput } from '@angular/cdk/table';
 import { GenerateAnswerModal } from '../generate-answer-modal/generate-answer-modal';
+import { DeleteConfimationModal } from '../delete-confimation-modal/delete-confimation-modal';
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 
 @Component({
   selector: 'app-preparation',
-  imports: [MatTableModule, MatButtonModule, TruncatePipe],
+  imports: [MatTableModule, MatButtonModule],
   templateUrl: './preparation.html',
   styleUrl: './preparation.css',
 })
@@ -19,6 +21,7 @@ export class Preparation {
   dataSource = new MatTableDataSource<QuestionItem>(MOCK_DATA);
 
   // MatDialog використовується для відкриття діалогових вікон(popup), таких як  GenerateAnswerModalComponent
+  // MatDialog використовуєм через Dependency Injection
   constructor(public dialog: MatDialog) {}
 
   // dataSource: CdkTableDataSourceInput<any> | undefined;
@@ -35,7 +38,16 @@ export class Preparation {
       }
     });
   }
-  openDeleteDialog(_t34: any) {
-    throw new Error('Method not implemented.');
+  openDeleteDialog(question: QuestionItem): void {
+    const dialogRef = this.dialog.open(DeleteConfimationModal, {
+      width: '333px',
+    });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      console.log('The Dialogue Was Closed', result);
+      if (result) {
+        console.log('Question would be deleted.', question);
+        // коли додамо service для видалення даних, то тут буде виклик методу для видалення даних з бази
+      }
+    });
   }
 }
