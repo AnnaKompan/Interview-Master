@@ -6,10 +6,11 @@
 </div>
 } @else{
 @if(data.answer){
-// Використовуємо директиву для анімації друку відповіді
+// Використовуємо директиву для анімації друку відповіді [typingSpeed]="50"
 <p class="modal-content" [appTypingAnimation]="data.answer" [typingSpeed]="50"></p>
 }
 <div class="modal-actions">
+    <!-- обробник подій через (круглі дужки) -->
     <button mat-button color="accent" (click)="regenerateAnswer()">REGENERATE</button>
     <button mat-flat-button color="primary" (click)="saveAnswer()">SAVE</button>
 </div>

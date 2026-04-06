@@ -6,21 +6,11 @@ import { LeftSideMenu } from './components/left-side-menu/left-side-menu';
 import { UserPanel } from './components/user-panel/user-panel';
 import { TopMenu } from './components/top-menu/top-menu';
 import { Preparation } from './components/preparation/preparation';
+import { PageNotFound } from './components/page-not-found/page-not-found';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    MatSidenavModule,
-    MatToolbarModule,
-    // Category,
-    // DeleteConfirmationModal,
-    // GenerateAnswerModal,
-    LeftSideMenu,
-    Preparation,
-    TopMenu,
-    // PageNotFound,
-    UserPanel,
-  ],
+  imports: [MatSidenavModule, MatToolbarModule, LeftSideMenu, Preparation, TopMenu, UserPanel],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
